@@ -1,0 +1,5 @@
+INCLUDE_DIRECTORIES(.)
+
+INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR} )
+
+add_executable(play main.cpp)
