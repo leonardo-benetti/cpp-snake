@@ -1,9 +1,11 @@
 #include <iostream>
-#include "Board.hpp"
+#include "Game.hpp"
+// #include "Board.hpp"
 
 int main()
 {
     std::cout << "Hello world" << std::endl;
-    Board b{10, 15};
-    b.RenderBoard();
+    Game g{10,15};
+    g.FillBoard();
+    g.GameDisplay();
 }

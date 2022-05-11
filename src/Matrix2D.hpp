@@ -1,3 +1,8 @@
+/*
+https://fullstackuser.com/questions/138379/what-is-the-best-modern-c-approach-to-construct-and-manipulate-a-2d-array
+https://stackoverflow.com/questions/53038457/what-is-the-best-modern-c-approach-to-construct-and-manipulate-a-2d-array
+https://stackoverflow.com/a/53038618
+*/
 #include <vector>
 
 template<typename T>
@@ -18,4 +23,13 @@ public:
 
     std::size_t col_size() const { return stride; }
     std::size_t row_size() const { return v.size() / stride; }
+
+    auto begin() { return std::begin(v); }
+    auto end() { return std::end(v); }
+
+    auto begin() const { return std::begin(v); }
+    auto end() const { return std::end(v); }
+
+    auto cbegin() const { return std::cbegin(v); }
+    auto cend() const { return std::cend(v); }
 };
