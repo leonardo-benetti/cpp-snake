@@ -5,7 +5,6 @@
 int main()
 {
     std::cout << "Hello world" << std::endl;
-    Game g{10,15};
-    g.FillBoard();
-    g.GameDisplay();
+    Game g{20,40};
+    g.gameLoop();
 }

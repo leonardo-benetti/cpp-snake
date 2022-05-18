@@ -1,7 +1,7 @@
 #include "Board.hpp"
 #include <iostream>
 
-Board::Board(std::size_t row, std::size_t col):b_Matrix(row,col)
+Board::Board(std::size_t row, std::size_t col):b_Matrix(row,col),dimX(row),dimY(col)
 {
     for(int i = 0; i < row; i++)
     {
@@ -9,6 +9,11 @@ Board::Board(std::size_t row, std::size_t col):b_Matrix(row,col)
         {
             if (i == 0 || i == row-1)
             {
+                if (j == 0 || j == col-1)
+                {
+                    b_Matrix(i,j) = '+';
+                    continue;
+                }
                 b_Matrix(i,j) = '=';
                 continue;
             }
@@ -22,12 +27,29 @@ Board::Board(std::size_t row, std::size_t col):b_Matrix(row,col)
     }
 }
 
-void Board::InsertElement(std::size_t row_coord, std::size_t col_coord, char elem)
+Board::~Board(){}
+
+bool Board::removeElement(coordinates coord)
 {
-    b_Matrix(row_coord, col_coord) = elem;
+    if (coord.x < 1 || coord.x >= dimX - 1)
+        return false;
+    if (coord.y < 1 || coord.y >= dimY - 1)
+        return false;
+    b_Matrix(coord.x, coord.y) = ' ';
+    return true;
 }
 
-void Board::RenderBoard() const
+bool Board::insertElement(coordinates coord, char elem)
+{
+    if (coord.x < 1 || coord.x >= dimX - 1)
+        return false;
+    if (coord.y < 1 || coord.y >= dimY - 1)
+        return false;
+    b_Matrix(coord.x, coord.y) = elem;
+    return true;
+}
+
+void Board::renderBoard() const
 {
     for(int i = 0; i < b_Matrix.row_size(); i++)
     {
